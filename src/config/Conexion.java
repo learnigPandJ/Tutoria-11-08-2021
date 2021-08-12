@@ -6,12 +6,12 @@ import java.sql.SQLException;
 
 public class Conexion {
 
-    private Connection conexion;
+    private Connection con;
 
-    public Connection conectar(){
+    public Connection get_connection(){
         String url = "jdbc:sqlite:basededatos/dbtutoria.db";
         try{
-            conexion = DriverManager.getConnection(url);
+            con = DriverManager.getConnection(url);
             System.out.println("Conexion exitosa");
 
         }catch(SQLException e){
@@ -19,7 +19,7 @@ public class Conexion {
         }
 
 
-        return conexion;
+        return con;
     }
     
 }
