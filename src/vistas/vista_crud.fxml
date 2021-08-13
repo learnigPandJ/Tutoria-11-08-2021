@@ -34,6 +34,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -173,17 +174,23 @@
                                                    </light>
                                                 </Lighting>
                                              </effect>
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor>
                                           </Button>
                                           <TextArea fx:id="txt_info_leida" layoutX="24.0" layoutY="67.0" prefHeight="215.0" prefWidth="200.0" />
-                                          <Button fx:id="btn_calcular" layoutX="277.0" layoutY="150.0" mnemonicParsing="false" onAction="#calcular_resultados" prefHeight="27.0" prefWidth="76.0" style="-fx-background-color: green;" text="Calcular" textFill="WHITE" />
+                                          <Button fx:id="btn_calcular" layoutX="277.0" layoutY="150.0" mnemonicParsing="false" onAction="#calcular_resultados" prefHeight="27.0" prefWidth="76.0" style="-fx-background-color: green;" text="Calcular" textFill="WHITE">
+                                             <cursor>
+                                                <Cursor fx:constant="CLOSED_HAND" />
+                                             </cursor></Button>
                                           <Label layoutX="395.0" layoutY="59.0" prefHeight="17.0" prefWidth="135.0" text="Pregunta1: Respuesta" />
-                                          <Label fx:id="result1_txtfield" layoutX="395.0" layoutY="92.0" prefHeight="39.0" prefWidth="141.0" style="-fx-background-color: green;" textFill="WHITE">
+                                          <Label fx:id="result1_txtfield" layoutX="395.0" layoutY="92.0" prefHeight="39.0" prefWidth="141.0" style="-fx-background-color: green;" textAlignment="CENTER" textFill="WHITE">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
                                           </Label>
                                           <Label layoutX="395.0" layoutY="166.0" prefHeight="17.0" prefWidth="144.0" text="Pregunta2: Respuesta" />
-                                          <Label fx:id="result2_txtfield" layoutX="392.0" layoutY="208.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: green;" textFill="WHITE">
+                                          <Label fx:id="result2_txtfield" layoutX="392.0" layoutY="208.0" prefHeight="38.0" prefWidth="150.0" style="-fx-background-color: green;" textAlignment="CENTER" textFill="WHITE">
                                              <font>
                                                 <Font size="20.0" />
                                              </font>
@@ -221,6 +228,36 @@
                                        </light>
                                     </Lighting>
                                  </effect>
+                                 <children>
+                                    <Pane layoutX="77.0" layoutY="41.0" opacity="0.77" prefHeight="287.0" prefWidth="500.0">
+                                       <effect>
+                                          <Lighting>
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant />
+                                             </light>
+                                          </Lighting>
+                                       </effect>
+                                       <children>
+                                          <ChoiceBox fx:id="eleccion_a_borrar" layoutX="62.0" layoutY="97.0" prefWidth="150.0" />
+                                          <TextField fx:id="datoa_a_borrar" layoutX="250.0" layoutY="89.0" promptText="Nombre/Materia">
+                                             <font>
+                                                <Font size="19.0" />
+                                             </font>
+                                          </TextField>
+                                          <Button fx:id="btn_borrar" layoutX="212.0" layoutY="207.0" mnemonicParsing="false" onAction="#onBorrar" text="Borrar">
+                                             <font>
+                                                <Font size="20.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </Button>
+                                       </children>
+                                    </Pane>
+                                 </children>
                               </Pane>
                            </children>
                         </AnchorPane>
@@ -230,7 +267,7 @@
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Pane layoutY="3.0" prefHeight="367.0" prefWidth="640.0" style="-fx-background-color: grey;">
+                              <Pane layoutY="3.0" prefHeight="367.0" prefWidth="640.0">
                                  <effect>
                                     <Lighting>
                                        <bumpInput>
@@ -241,6 +278,63 @@
                                        </light>
                                     </Lighting>
                                  </effect>
+                                 <children>
+                                    <Pane layoutX="60.0" layoutY="52.0" prefHeight="273.0" prefWidth="506.0" style="-fx-background-color: white;">
+                                       <effect>
+                                          <Lighting>
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant />
+                                             </light>
+                                          </Lighting>
+                                       </effect>
+                                       <children>
+                                          <Button fx:id="btn_actualizar" layoutX="218.0" layoutY="209.0" mnemonicParsing="false" onAction="#onActualizar" text="Actualizar">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <effect>
+                                                <Lighting>
+                                                   <bumpInput>
+                                                      <Shadow />
+                                                   </bumpInput>
+                                                   <light>
+                                                      <Light.Distant />
+                                                   </light>
+                                                </Lighting>
+                                             </effect>
+                                          </Button>
+                                          <TextField fx:id="act_nombre" layoutX="225.0" layoutY="32.0" promptText="nombre" />
+                                          <Label fx:id="Nombre" layoutX="116.0" layoutY="36.0" prefHeight="14.0" prefWidth="82.0" text="Nombre:">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="116.0" layoutY="75.0" text="Genero:">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="116.0" layoutY="120.0" text="Materia:">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="116.0" layoutY="161.0" text="Nota:">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="act_genero" layoutX="225.0" layoutY="73.0" promptText="Genero" />
+                                          <TextField fx:id="act_materia" layoutX="225.0" layoutY="118.0" promptText="Materia" />
+                                          <TextField fx:id="act_nota" layoutX="225.0" layoutY="159.0" promptText="Nota" />
+                                          <Button fx:id="btn_buscar_act" layoutX="426.0" layoutY="32.0" mnemonicParsing="false" onAction="#onBuscarAsistente" text="Buscar" />
+                                          <TextField fx:id="id_asistente" alignment="CENTER" layoutX="411.0" layoutY="63.0" prefHeight="25.0" prefWidth="80.0" promptText="ID" />
+                                       </children>
+                                    </Pane>
+                                 </children>
                               </Pane>
                            </children>
                         </AnchorPane>

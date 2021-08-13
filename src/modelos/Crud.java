@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import config.Conexion;
+import javax.swing.JOptionPane;
 
 
 public class Crud{
@@ -20,6 +21,9 @@ public class Crud{
             stm.executeUpdate(query); 
 
             con.close();
+
+            JOptionPane.showMessageDialog(null, "Registro guardado con exito");
+
 
         }catch(Exception e){
             System.out.println(e);
@@ -51,6 +55,96 @@ public class Crud{
         }
 
         return datosObtenidos;
+        
+    }
+
+    public void borrarDatos(String datoaborrar,String itemseleccionado ){
+        Conexion conexion = new Conexion();
+
+        Connection con =  conexion.get_connection();
+        try{
+            Statement stm = con.createStatement();
+
+            String query = "";
+            
+
+            switch(itemseleccionado){
+                case "Materia":
+                    query = String.format("delete from tb_asistentes where materia ='%s'",datoaborrar);
+                break;
+                case "Nombre":
+                    query = String.format("delete from tb_asistentes where nombre ='%s'",datoaborrar);
+                break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Por favor seleccione por cual campo desea borrar (Materia ó Nombre)");
+
+            }
+
+           if(!query.equals("") && !datoaborrar.equals("") ){
+                stm.executeUpdate(query);
+
+            JOptionPane.showMessageDialog(null, "Registro eliminado con exito");
+           } else{
+                JOptionPane.showMessageDialog(null, "Registro no fue eliminado");
+           }
+            
+           con.close();
+
+
+        }catch(Exception e){
+            System.out.println("Error: "+ e);
+        }
+        
+    }
+
+    public String[] leerDatosAsistente(int id_asistente){
+
+        Conexion conexion = new Conexion();
+        
+        String datosObtenidos = "";
+
+        Connection con =  conexion.get_connection();
+        try{
+            Statement stm = con.createStatement();
+
+            String query = String.format("select * from tb_Asistentes where id = %s",id_asistente); 
+            
+            ResultSet datos = stm.executeQuery(query); 
+
+            while(datos.next()){
+                datosObtenidos += String.format("%s %s %s %s\n",datos.getString("nombre"),datos.getInt("genero"),datos.getString("materia"),datos.getDouble("notas"));
+            }
+
+            con.close();
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
+        
+
+        return datosObtenidos.split(" ");
+        
+    }
+
+    public void actualizarRegistros(String nombre, int genero, String materia, float nota,int id){
+        Conexion conexion = new Conexion();
+
+        Connection con =  conexion.get_connection();
+        try{
+            Statement stm = con.createStatement();
+
+            String query = String.format("update tb_asistentes set nombre = '%s', genero = %s, materia = '%s', notas = %s where id = %s",nombre, genero,materia,nota,id); 
+            
+            stm.executeUpdate(query); 
+
+            con.close();
+
+            JOptionPane.showMessageDialog(null, "Registro actualizado con exito");
+
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
         
     }
 }
