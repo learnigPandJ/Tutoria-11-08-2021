@@ -83,6 +83,19 @@ public class controller_vista_crud {
     @FXML
     private TextField id_asistente;
 
+    
+    @FXML
+    private Button btn_busqueda;
+
+    @FXML
+    private TextField nombre_busc;
+
+    @FXML
+    private TextField materia_busc;
+
+    @FXML
+    private TextArea result_busqueda;
+
     @FXML
     private void initialize(){
         eleccion_a_borrar.setItems(itemsSeleccion);
@@ -160,6 +173,18 @@ public class controller_vista_crud {
        float nota = Float.parseFloat(act_nota.getText());
        int id = Integer.parseInt(id_asistente.getText());
         crud.actualizarRegistros(nombre,genero,materia,nota,id);
+    }
+
+
+    @FXML
+    void onBuscarDato(ActionEvent event) {
+
+        Crud crud =  new Crud();
+        String  nombreb = nombre_busc.getText();
+        String materiab = materia_busc.getText();
+
+        result_busqueda.setText(crud.busquedadeDatos(nombreb,materiab));
+
     }
 
 }

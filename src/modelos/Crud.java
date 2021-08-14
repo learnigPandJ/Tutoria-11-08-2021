@@ -147,4 +147,55 @@ public class Crud{
         }
         
     }
+
+    public String busquedadeDatos(String nombre,String materia){
+        Conexion conexion = new Conexion();
+
+        Connection con =  conexion.get_connection();
+        String datosObtenidos="";
+        try{
+            Statement stm = con.createStatement();
+
+            String query = "";
+            String campo = "";
+            if(!nombre.equals("") && materia.equals("")){
+                campo = "Nombre";
+            }else if(!materia.equals("") && nombre.equals("")){
+                campo = "Materia";
+            }else{
+                campo = "MN";
+            }
+
+            switch(campo){
+                case "Materia":
+                    query = String.format("select * from tb_Asistentes where materia = '%s'",materia);
+                break;
+                case "Nombre":
+                    query = String.format("select * from tb_Asistentes where nombre = '%s'",nombre);
+                break;
+                case "MN":
+                    query = String.format("select * from tb_Asistentes where materia = '%s' and nombre = '%s'",materia,nombre);
+                break; 
+                default:
+                    JOptionPane.showMessageDialog(null, "Por favor seleccione por cual campo desea buscar (Materia ó Nombre)");
+
+            }
+
+              ResultSet registros =  stm.executeQuery(query);
+             
+              while(registros.next()){
+                datosObtenidos += String.format("%s %s %s %s\n",registros.getString("nombre"),registros.getInt("genero"),registros.getString("materia"),registros.getDouble("notas"));
+            }
+            
+            
+           con.close();
+
+
+        }catch(Exception e){
+            System.out.println("Error: "+ e);
+        }
+
+        return datosObtenidos;
+        
+    }
 }

@@ -340,6 +340,52 @@
                         </AnchorPane>
                     </content>
                   </Tab>
+                  <Tab text="Buscar">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Pane prefHeight="369.0" prefWidth="640.0">
+                                 <effect>
+                                    <Lighting>
+                                       <bumpInput>
+                                          <Shadow />
+                                       </bumpInput>
+                                       <light>
+                                          <Light.Distant />
+                                       </light>
+                                    </Lighting>
+                                 </effect>
+                                 <children>
+                                    <Pane layoutX="78.0" layoutY="47.0" prefHeight="269.0" prefWidth="488.0">
+                                       <children>
+                                          <Button fx:id="btn_busqueda" layoutX="362.0" layoutY="30.0" mnemonicParsing="false" onAction="#onBuscarDato" text="Buscar">
+                                             <font>
+                                                <Font size="18.0" />
+                                             </font>
+                                          </Button>
+                                          <Label layoutX="46.0" layoutY="30.0" text="Nombre:" />
+                                          <Label layoutX="46.0" layoutY="61.0" text="Materia:" />
+                                          <TextField fx:id="nombre_busc" layoutX="112.0" layoutY="26.0" promptText="Nombre" />
+                                          <TextField fx:id="materia_busc" layoutX="112.0" layoutY="57.0" promptText="Materia" />
+                                          <TextArea fx:id="result_busqueda" editable="false" layoutX="44.0" layoutY="110.0" prefHeight="144.0" prefWidth="398.0" promptText="Resultados de Busqueda" />
+                                       </children>
+                                       <effect>
+                                          <Lighting>
+                                             <bumpInput>
+                                                <Shadow />
+                                             </bumpInput>
+                                             <light>
+                                                <Light.Distant />
+                                             </light>
+                                          </Lighting>
+                                       </effect>
+                                    </Pane>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </Tab>
               </tabs>
             </TabPane>
       </children>
